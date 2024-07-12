@@ -102,7 +102,7 @@ const SectionHero = () => {
       </div>
 
       {/* Button */}
-      <button className="py-3 px-6 border-2 border-white rounded-tr-full rounded-bl-full flex justify-center items-center gap-1 absolute bottom-8 left-8">
+      <button className={`${styles.btn}`}>
         <span>Continue</span>
         <IoIosArrowRoundForward size={22} />
       </button>

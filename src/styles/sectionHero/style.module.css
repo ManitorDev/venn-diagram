@@ -24,3 +24,7 @@
 .descContainer {
   @apply absolute top-[50%] md:left-[50%] md:w-1/2 lg:w-2/4 w-[100lvw];
 }
+
+.btn {
+  @apply py-3 px-6 border-2 border-white rounded-tr-full rounded-bl-full flex justify-center items-center gap-1 absolute bottom-8 left-8;
+}
