@@ -1,11 +1,55 @@
 "use client";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const WhatVennSection = () => {
+  const textRef = useRef<HTMLElement>(null);
+  const imgRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const text = textRef.current;
+    const img = imgRef.current;
+
+    gsap.fromTo(
+      text,
+      { opacity: 0, y: 150 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 2,
+        scrollTrigger: {
+          scrub: 2,
+          trigger: text,
+          start: "top 80%",
+          end: "top center",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      img,
+      { opacity: 0, x: 150 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 2,
+        scrollTrigger: {
+          scrub: 2,
+          trigger: img,
+          start: "top 80%",
+          end: "top center",
+        },
+      }
+    );
+  }, []);
   return (
     <section className="h-screen w-full relative">
       <section className="w-full md:w-1/2 px-4 pl-8 absolute top-0 md:top-1/4 mx-auto gap-2 h-screen flex flex-col justify-center items-center">
-        <div className="text-sm">
+        <div ref={textRef} className="text-sm">
           <span className="font-bold text-5xl">Usage:</span>
           <span className="text-justify py-5 flex flex-col justify-center items-start">
             To use this site, first of all, you must log in to your account, and
@@ -52,6 +96,7 @@ const WhatVennSection = () => {
       </section>
       <section className="">
         <Image
+          ref={imgRef}
           src="/images/Artboard .png"
           alt="Artboard"
           width={innerWidth}
