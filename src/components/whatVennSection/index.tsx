@@ -3,12 +3,13 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const WhatVennSection = () => {
-  const textRef = useRef<HTMLElement>(null);
-  const imgRef = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     const text = textRef.current;
@@ -89,9 +90,12 @@ const WhatVennSection = () => {
               ""
             )}
           </span>
-          <button className="py-3 px-6 border-2 border-white rounded-tr-full rounded-bl-full flex justify-center items-center gap-1 ">
+          <Link
+            href="/register"
+            className="py-3 px-6 border-2 border-white rounded-tr-full rounded-bl-full flex justify-center items-center gap-1 "
+          >
             Start Now
-          </button>
+          </Link>
         </div>
       </section>
       <section className="">

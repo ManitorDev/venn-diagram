@@ -1,6 +1,6 @@
 "use client";
 // Import necessary libraries and components
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, EventHandler } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { BsShare } from "react-icons/bs";
@@ -73,10 +73,34 @@ const Header = () => {
     };
   }, [isOpen]);
 
+  const [scroll, setScroll] = useState<number>(0);
+  const headerRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const el = headerRef.current;
+    if (scroll > el!.clientHeight) {
+      el!.classList.add("bg-black");
+    } else {
+      el?.classList.remove("bg-black");
+    }
+  }, [scroll]);
+
+  const handleScroll = () => {
+    setScroll(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
+
   // Render the header component
   return (
     <header>
-      <nav className="flex w-[100lvw] items-center fixed top-0 justify-between px-6 h-16 z-10">
+      <nav
+        ref={headerRef}
+        className="flex w-[100lvw] items-center fixed top-0 justify-between px-6 h-16 z-10"
+      >
         {/* Drawer toggle button */}
         <div className="flex items-center">
           <button
