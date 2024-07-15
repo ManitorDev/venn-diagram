@@ -1,6 +1,10 @@
 "use client";
 import { Form, Field, Formik } from "formik";
 import styles from "@/styles/sendComment/style.module.css";
+import gsap, { ScrollTrigger } from "gsap/all";
+import { useEffect, useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Values = {
   name: string;
@@ -12,8 +16,33 @@ const SendComment = () => {
     console.log("submitted");
   };
 
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+
+    gsap.fromTo(
+      el,
+      {
+        opacity: 0,
+        y: 150,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 2,
+        scrollTrigger: {
+          scrub: 2,
+          start: "top 80%",
+          end: "top center",
+          trigger: el,
+        },
+      }
+    );
+  }, []);
+
   return (
-    <div className={`${styles.container}`}>
+    <div ref={containerRef} className={`${styles.container}`}>
       <div className="flex flex-col justify-center items-center gap-4">
         <span className="text-5xl font-bold">Send a comment</span>
         <span>Please share your thoughts on how to imporve our quality!</span>
