@@ -37,29 +37,27 @@ const Register = () => {
   };
 
   const handleBlur = (inputId: string) => {
-    switch (inputId) {
-      case "email":
-        if (!document.getElementById("email")?.value) {
+    const inputElement = document.getElementById(
+      inputId
+    ) as HTMLInputElement | null;
+
+    if (inputElement && !inputElement.value) {
+      switch (inputId) {
+        case "email":
           setShowEmailLabel(true);
-        }
-        break;
-      case "username":
-        if (!document.getElementById("username")?.value) {
+          break;
+        case "username":
           setShowUsernameLabel(true);
-        }
-        break;
-      case "password":
-        if (!document.getElementById("password")?.value) {
+          break;
+        case "password":
           setShowPasswordLabel(true);
-        }
-        break;
-      case "repassword":
-        if (!document.getElementById("repassword")?.value) {
+          break;
+        case "repassword":
           setShowRePasswordLabel(true);
-        }
-        break;
-      default:
-        break;
+          break;
+        default:
+          break;
+      }
     }
   };
 
@@ -119,9 +117,9 @@ const Register = () => {
 
   return (
     <div className="grid grid-cols-5 w-full h-screen">
-      <div className="col-span-3 rounded-3xl bg-slate-500"></div>
+      <div className={styles.bg}></div>
 
-      <div className="col-span-2  flex flex-col justify-center items-center h-screen gap-8">
+      <div className="col-span-5 md:col-span-2  flex flex-col justify-center items-center h-screen gap-8">
         <div className="flex flex-col px-0 justify-center items-start gap-5">
           <span className="text-4xl">Sign up</span>
           <span className="w-3/4">
@@ -225,14 +223,5 @@ const Register = () => {
     </div>
   );
 };
-
-const Errors = (msg: string) =>
-  toast(msg, {
-    style: {
-      backgroundColor: "red",
-      color: "white",
-    },
-    icon: <IoIosWarning />,
-  });
 
 export default Register;

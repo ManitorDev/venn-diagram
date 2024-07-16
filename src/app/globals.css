@@ -17,6 +17,10 @@
   }
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   font-family: "Poppins", sans-serif;
