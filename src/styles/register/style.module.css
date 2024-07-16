@@ -14,3 +14,7 @@
 .btn {
   @apply py-3 px-7 bg-slate-500 rounded-3xl text-black transition-all duration-300 hover:bg-slate-600;
 }
+
+.error {
+  @apply flex justify-start items-center mt-0;
+}

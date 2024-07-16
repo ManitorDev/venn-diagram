@@ -8,6 +8,8 @@ import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
 import { CiLock } from "react-icons/ci";
 import { useEffect, useRef, useState } from "react";
 import styles from "@/styles/register/style.module.css";
+import { IoIosWarning } from "react-icons/io";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const router = useRouter();
@@ -61,6 +63,60 @@ const Register = () => {
     }
   };
 
+  const handleSubmit = (values: {
+    email: string;
+    username: string;
+    password: string;
+    repassword: string;
+  }) => {
+    console.log(values);
+  };
+
+  const formik = useFormik({
+    initialValues: { email: "", username: "", password: "", repassword: "" },
+    onSubmit: handleSubmit,
+    validationSchema: yup.object({
+      email: yup
+        .string()
+        .required("email required")
+        .email("email is not valid"),
+      username: yup
+        .string()
+        .required("username required")
+        .min(3, "Username must be at least 3 characters")
+        .max(16, "Username should not be more than 16 characters"),
+      password: yup
+        .string()
+        .required("No password provided.")
+        .min(8, "Password is too short - should be 8 chars minimum.")
+        .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
+      repassword: yup
+        .string()
+        .required("Confirm password is required")
+        .test("passwords-match", "Passwords must match", function (value) {
+          return this.parent.password === value;
+        }),
+    }),
+    validateOnChange: false,
+    validateOnBlur: false,
+  });
+
+  const [errorDisplayed, setErrorDisplayed] = useState(false);
+
+  useEffect(() => {
+    if (formik.submitCount > 0) {
+      if (formik.errors.email) {
+        toast.error(`${formik.errors.email}`);
+      } else if (formik.errors.username) {
+        toast.error(`${formik.errors.username}`);
+      } else if (formik.errors.password) {
+        toast.error(`${formik.errors.password}`);
+      } else if (formik.errors.repassword) {
+        toast.error(`${formik.errors.repassword}`);
+      }
+    }
+  }, [formik.submitCount, formik.errors]);
+
   return (
     <div className="grid grid-cols-5 w-full h-screen">
       <div className="col-span-3 rounded-3xl bg-slate-500"></div>
@@ -76,7 +132,10 @@ const Register = () => {
           </span>
         </div>
 
-        <form className="flex w-2/3 flex-col justify-around items-center gap-10">
+        <form
+          onSubmit={formik.handleSubmit}
+          className="flex w-2/3 flex-col justify-around items-center gap-10"
+        >
           <label className={`${styles.label} `} htmlFor="email">
             <span
               className={`${styles.span}  ${
@@ -92,6 +151,7 @@ const Register = () => {
               name="email"
               id="email"
               onFocus={() => setShowEmailLabel(false)}
+              onChange={formik.handleChange}
               onBlur={() => {
                 handleBlur("email");
               }}
@@ -112,6 +172,7 @@ const Register = () => {
               type="text"
               name="username"
               id="username"
+              onChange={formik.handleChange}
               onFocus={() => handleFocus("username")}
               onBlur={() => handleBlur("username")}
             />
@@ -131,6 +192,7 @@ const Register = () => {
               type="password"
               name="password"
               id="password"
+              onChange={formik.handleChange}
               onFocus={() => handleFocus("password")}
               onBlur={() => handleBlur("password")}
             />
@@ -150,6 +212,7 @@ const Register = () => {
               type="password"
               name="repassword"
               id="repassword"
+              onChange={formik.handleChange}
               onFocus={() => handleFocus("repassword")}
               onBlur={() => handleBlur("repassword")}
             />
@@ -162,5 +225,14 @@ const Register = () => {
     </div>
   );
 };
+
+const Errors = (msg: string) =>
+  toast(msg, {
+    style: {
+      backgroundColor: "red",
+      color: "white",
+    },
+    icon: <IoIosWarning />,
+  });
 
 export default Register;

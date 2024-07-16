@@ -4,6 +4,8 @@ import "./globals.css";
 import ReduxProvider from "@/components/provider";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "VENN DIAGRAM",
@@ -19,6 +21,11 @@ export default function RootLayout({
     <html lang="en">
       <body className="w-[100lvw] overflow-x-hidden">
         <ReduxProvider>
+          <ToastContainer
+            autoClose={5000}
+            closeButton={true}
+            position="top-right"
+          />
           <Header />
           {children}
           <Footer />
