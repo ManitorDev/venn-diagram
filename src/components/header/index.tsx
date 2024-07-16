@@ -5,6 +5,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { BsShare } from "react-icons/bs";
 import Link from "next/link";
+import { GoSignIn } from "react-icons/go";
 
 // Define the Header component
 const Header = () => {
@@ -14,36 +15,24 @@ const Header = () => {
   // Define the side list items
   const sideList = [
     {
-      icon: <AiOutlineHome className="text-2xl" />,
-      title: "item 1",
+      icon: <GoSignIn className="text-2xl" />,
+      title: "SignIn / SignUp",
+      href: "/register",
     },
     {
       icon: <AiOutlineHome className="text-2xl" />,
       title: "item 2",
+      href: "/",
     },
     {
       icon: <AiOutlineHome className="text-2xl" />,
       title: "item 3",
+      href: "/",
     },
     {
       icon: <AiOutlineHome className="text-2xl" />,
       title: "item 4",
-    },
-  ];
-
-  // Define the nav list items (not used in this implementation)
-  const navList = [
-    {
-      icon: <AiOutlineHome className="text-2xl mr-2" />,
-      title: "item",
-    },
-    {
-      icon: <AiOutlineHome className="text-2xl" />,
-      title: "",
-    },
-    {
-      icon: <AiOutlineHome className="text-2xl" />,
-      title: "",
+      href: "/",
     },
   ];
 
@@ -140,14 +129,15 @@ const Header = () => {
           <span className="flex w-full items-center p-4 border-b">
             LOGO NAME
           </span>
-          {sideList.map(({ icon, title }, index) => {
+          {sideList.map(({ icon, title, href }, index) => {
             return (
-              <span
+              <Link
+                href={href}
                 key={index}
                 className="flex items-center p-4 hover:bg-slate-800 hover:text-white"
               >
                 <span className="mr-2">{icon}</span> <span>{title}</span>
-              </span>
+              </Link>
             );
           })}
           <div className="fixed bottom-0 w-full">

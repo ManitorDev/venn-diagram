@@ -47,6 +47,10 @@ const WhatVennSection = () => {
       }
     );
   }, []);
+
+  const windowWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+  const windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
+
   return (
     <section className="h-screen w-full relative">
       <section className="w-full md:w-1/2 px-4 pl-8 absolute top-0 md:top-0 mx-auto gap-2 h-screen flex flex-col justify-center items-center">
@@ -81,10 +85,10 @@ const WhatVennSection = () => {
           ref={imgRef}
           src="/images/Artboard .png"
           alt="Artboard"
-          width={innerWidth}
-          height={innerHeight}
+          width={windowWidth}
+          height={windowHeight}
           className={`absolute top-0 -right-3 -z-10 h-screen ${
-            innerHeight > innerWidth ? "w-[200%]" : "w-full"
+            windowHeight > windowWidth ? "w-[200%]" : "w-full"
           }`}
         />
       </section>
