@@ -1,4 +1,4 @@
-import { createAction, createReducer } from "@reduxjs/toolkit";
+import { createAction, createReducer, PrepareAction } from "@reduxjs/toolkit";
 
 export const addVenns = createAction("addVenns");
 

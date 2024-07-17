@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import styles from "@/styles/register/style.module.css";
 import { toast } from "react-toastify";
 import { MdOutlineDataArray } from "react-icons/md";
-import { UseDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addVenns } from "@/store/reducers/setDiagramArrays";
 
 const CreateDiagram = () => {
@@ -20,6 +20,35 @@ const CreateDiagram = () => {
 
   const [showVenn1Label, setShowVenn1Label] = useState(true);
   const [showVenn2Label, setShowVenn2Label] = useState(true);
+
+  const dispatch = useDispatch();
+
+  // Transform to set for remove duplicate members
+  const converStringToSet = ({
+    strOne,
+    strTwo,
+  }: {
+    strOne: string;
+    strTwo: string;
+  }) => {
+    let arrayOne = strOne.split("-");
+    let arrayTwo = strTwo.split("-");
+    let setOne = new Set(arrayOne);
+    let setTwo = new Set(arrayTwo);
+    return { setOne, setTwo };
+  };
+
+  // Receive and store values
+  const handleSubmit = ({ venn1, venn2 }: { venn1: string; venn2: string }) => {
+    const { setOne, setTwo } = converStringToSet({
+      strOne: venn1,
+      strTwo: venn2,
+    });
+    let arrOne = Array.from(setOne);
+    let arrTwo = Array.from(setTwo);
+    dispatch(addVenns({ venn1: arrOne, venn2: arrTwo }``));
+    router.push("/venn");
+  };
 
   const handleFocus = (inputId: string) => {
     if (inputId === "venn1") {
@@ -46,10 +75,6 @@ const CreateDiagram = () => {
           break;
       }
     }
-  };
-
-  const handleSubmit = (values: { venn1: string; venn2: string }) => {
-    console.log(values);
   };
 
   const formik = useFormik({
