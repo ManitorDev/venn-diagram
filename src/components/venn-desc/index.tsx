@@ -27,16 +27,20 @@ const VennDesc = () => {
       }
     );
 
-    gsap.fromTo(list, { opacity: 0, y: 100 }, {
-      opacity: 1,
-      y: 0,
-      scrollTrigger: {
-        scrub: 2,
-        trigger: list,
-        start: "top 80%",
-        end: "top center",
+    gsap.fromTo(
+      list,
+      { opacity: 0, y: 100 },
+      {
+        opacity: 1,
+        y: 0,
+        scrollTrigger: {
+          scrub: 2,
+          trigger: list,
+          start: "top 80%",
+          end: "top center",
+        },
       }
-    });
+    );
   }, []);
 
   return (
@@ -47,11 +51,11 @@ const VennDesc = () => {
         objectFit: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-full flex justify-between p-6 relative h-screen"
+      className="w-full flex flex-col md:flex-row justify-between p-6 relative h-[150lvh] md:h-screen text-justify"
     >
       <div
         ref={textRef}
-        className="w-1/2 absolute top-3 left-6 flex flex-col justify-around items-start gap-3"
+        className="w-full md:w-1/2 absolute top-3 left-6 flex flex-col justify-around items-start gap-3"
       >
         <span className="text-2xl md:text-4xl">What is a Venn diagram?</span>
         <span className="indent-4">
@@ -71,7 +75,10 @@ const VennDesc = () => {
           of the Venn diagram, the following can be mentioned: <br />
         </span>
       </div>
-      <div ref={listRef} className="absolute bottom-7 right-6 w-1/2">
+      <div
+        ref={listRef}
+        className="absolute bottom-7 sm:left-6 md:left-[55%] w-full md:w-[40%]"
+      >
         <ul className="list-decimal p-5">
           <li className="p-4">
             Visual organization of information to observe the relationship

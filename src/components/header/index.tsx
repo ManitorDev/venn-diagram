@@ -6,6 +6,7 @@ import { HiMenuAlt1 } from "react-icons/hi";
 import { BsShare } from "react-icons/bs";
 import Link from "next/link";
 import { GoSignIn } from "react-icons/go";
+import { MdOutlineDataArray } from "react-icons/md";
 
 // Define the Header component
 const Header = () => {
@@ -20,9 +21,9 @@ const Header = () => {
       href: "/register",
     },
     {
-      icon: <AiOutlineHome className="text-2xl" />,
-      title: "item 2",
-      href: "/",
+      icon: <MdOutlineDataArray className="text-2xl" />,
+      title: "Create Diagram",
+      href: "/create-diagram",
     },
     {
       icon: <AiOutlineHome className="text-2xl" />,
@@ -105,7 +106,7 @@ const Header = () => {
         {/* Nav links */}
         <div className="flex items-center">
           <div className="flex uppercase md:justify-between md:bg-transparent">
-            <Link href="/">submit a form</Link>
+            <Link href="/create-diagram">submit a form</Link>
           </div>
         </div>
 

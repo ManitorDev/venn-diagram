@@ -43,12 +43,12 @@ const SendComment = () => {
 
   return (
     <div ref={containerRef} className={`${styles.container}`}>
-      <div className="flex flex-col justify-center items-center gap-4">
-        <span className="text-5xl font-bold">Send a comment</span>
-        <span>Please share your thoughts on how to imporve our quality!</span>
+      <div className="flex flex-col p-5 justify-center items-center gap-4">
+        <span className="text-5xl text-center font-bold">Send a comment</span>
+        <span className="text-center">Please share your thoughts on how to imporve our quality!</span>
       </div>
       <Formik initialValues={{ name: "", msg: "" }} onSubmit={handleSubmit}>
-        <Form className="flex flex-col justify-center items-center gap-5 w-full">
+        <Form className="flex flex-col p-5 justify-center items-center gap-5 w-full">
           <Field
             className={`${styles.input}`}
             placeholder="name ..."

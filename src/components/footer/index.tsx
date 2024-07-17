@@ -6,13 +6,13 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="flex w-full px-6 py-4 justify-around items-center">
-      <div className="w-1/3">
+    <footer className="flex flex-col md:flex-row items-start w-full px-6 py-4 justify-around gap-5 md:items-center">
+      <div className="w-full md:w-1/3">
         <span className="font-extralight text-sm text-slate-400">
           &copy; Built and mainteained by <Link href="/">ManiTor.Dev</Link>
         </span>
       </div>
-      <div className="flex w-1/3 justify-center items-center gap-4 ">
+      <div className="flex w-full md:w-1/3 justify-center items-center gap-4 ">
         <Link href="/">
           <FaXTwitter />
         </Link>
@@ -23,7 +23,7 @@ const Footer = () => {
           <FaInstagram />
         </Link>
       </div>
-      <div className="w-1/3">
+      <div className="w-full md:w-1/3">
         <Formik
           initialValues={{ email: "" }}
           onSubmit={(values: { email: string }) => {

@@ -120,10 +120,10 @@ const Register = () => {
       <div className={styles.bg}></div>
 
       <div className="col-span-5 md:col-span-2  flex flex-col justify-center items-center h-screen gap-8">
-        <div className="flex flex-col px-0 justify-center items-start gap-5">
+        <div className="flex flex-col items-center px-0 justify-center md:items-start gap-5">
           <span className="text-4xl">Sign up</span>
           <span className="w-3/4">
-            If you don't have an account register you can{" "}
+            If you have an account you can{" "}
             <Link className="text-slate-500" href="/login">
               Login here !
             </Link>

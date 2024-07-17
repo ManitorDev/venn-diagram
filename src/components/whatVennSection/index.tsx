@@ -35,8 +35,8 @@ const WhatVennSection = () => {
       img,
       { opacity: 0, x: 150 },
       {
-        x: 0,
         opacity: 1,
+        x: 0,
         duration: 2,
         scrollTrigger: {
           scrub: 2,
@@ -83,11 +83,11 @@ const WhatVennSection = () => {
       <section className="">
         <Image
           ref={imgRef}
-          src="/images/Artboard .png"
+          src="/images/Artboard.png"
           alt="Artboard"
           width={windowWidth}
           height={windowHeight}
-          className={`absolute top-0 -right-3 -z-10 h-screen ${
+          className={`absolute top-0 -right-3 -z-10 h-screen w-full ${
             windowHeight > windowWidth ? "w-[200%]" : "w-full"
           }`}
         />

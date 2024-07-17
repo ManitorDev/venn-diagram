@@ -46,7 +46,7 @@ const CreateDiagram = () => {
     });
     let arrOne = Array.from(setOne);
     let arrTwo = Array.from(setTwo);
-    dispatch(addVenns({ venn1: arrOne, venn2: arrTwo }``));
+    dispatch(addVenns({ venn1: arrOne, venn2: arrTwo }));
     router.push("/venn");
   };
 

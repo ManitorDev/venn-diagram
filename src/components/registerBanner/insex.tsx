@@ -11,8 +11,10 @@ const RegisterBanner = () => {
       }}
       className="w-full h-screen flex flex-col gap-5 justify-center items-center"
     >
-      <span className="text-4xl font-bold">But first, lets get started!</span>
-      <span className="font-light">
+      <span className="text-4xl text-center font-bold">
+        But first, lets get started!
+      </span>
+      <span className="font-light text-center">
         By registering and creating an account on the site, become part of our
         big family and benefit from the benefits of the site
       </span>
