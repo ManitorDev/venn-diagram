@@ -8,7 +8,6 @@ import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
 import { CiLock } from "react-icons/ci";
 import { useEffect, useRef, useState } from "react";
 import styles from "@/styles/register/style.module.css";
-import { IoIosWarning } from "react-icons/io";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -20,9 +19,7 @@ const Login = () => {
   }
 
   const [showPasswordLabel, setShowPasswordLabel] = useState(true);
-  const [showRePasswordLabel, setShowRePasswordLabel] = useState(true);
   const [showEmailLabel, setShowEmailLabel] = useState(true);
-  const [showUsernameLabel, setShowUsernameLabel] = useState(true);
 
   const handleFocus = (inputId: string) => {
     if (inputId === "email") {

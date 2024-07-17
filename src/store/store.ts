@@ -1,6 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import Venns from "./reducers/setDiagramArrays";
 
-const reducer = {}
+const reducer = {
+  venns: Venns,
+};
 
 const store = configureStore({
   reducer,
