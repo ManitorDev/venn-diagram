@@ -25,16 +25,6 @@ const Header = () => {
       title: "Create Diagram",
       href: "/create-diagram",
     },
-    {
-      icon: <AiOutlineHome className="text-2xl" />,
-      title: "item 3",
-      href: "/",
-    },
-    {
-      icon: <AiOutlineHome className="text-2xl" />,
-      title: "item 4",
-      href: "/",
-    },
   ];
 
   // Function to handle drawer toggle
