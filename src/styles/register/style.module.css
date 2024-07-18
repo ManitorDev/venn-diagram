@@ -22,3 +22,19 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.createBg {
+  @apply hidden md:block col-span-3 rounded-3xl;
+  background-image: url(/images/create.jpg);
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.loginBg {
+  @apply hidden md:block col-span-3 rounded-3xl;
+  background-image: url(/images/login.jpg);
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

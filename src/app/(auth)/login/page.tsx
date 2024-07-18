@@ -84,7 +84,7 @@ const Login = () => {
 
   return (
     <div className="grid grid-cols-5 w-full h-screen">
-      <div className={styles.bg}></div>
+      <div className={styles.loginBg}></div>
 
       <div className="col-span-5 md:col-span-2  flex flex-col justify-center items-center h-screen gap-8">
         <div className="flex flex-col items-center px-0 justify-center md:items-start gap-5">
